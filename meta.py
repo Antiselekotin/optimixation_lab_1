@@ -3,8 +3,10 @@ import numpy as np
 # first
 # def fn(x, y):
 #     return x**4 + y**4 + np.sqrt(2 + x**2 + y**2) - 2*x - 3*y
-# x = np.linspace(-10, 10, 100)
-# y = np.linspace(-10, 10, 100)
+# def dfn(x, y):
+#     return [4*x**3 + x/np.sqrt(x**2 + y**2 + 2) - 2, 4*y**3 + y/np.sqrt(x**2 + y**2 + 2) + 3]
+# x = np.linspace(-3, 3, 100)
+# y = np.linspace(-3, 3, 100)
 # radius = 10
 # second
 def fn(x, y):
