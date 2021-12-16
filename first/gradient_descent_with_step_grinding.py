@@ -1,4 +1,4 @@
-import meta
+import meta.Meta as Meta
 import numpy as np
 from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
@@ -20,19 +20,19 @@ quality2 = 0.00001
 def absV(x): 
     return np.sqrt(x[0]**2 + x[1]**2)
 
-def gradientDescent(coords, step, max): 
+def gradientDescent(coords, step, maximum): 
     coordsArr = []
     k = 0
-    while(True):
-        grad = meta.dfn(coords[0], coords[1])
+    while True:
+        grad = Meta.dfn(coords[0], coords[1])
         if abs(grad[0]) < quality1 and abs(grad[1]) < quality1:
             return coordsArr
-        if k >= max:
+        if k >= maximum:
             return coordsArr
         delta = 0
-        while(True):
+        while True:
             newCoords = [coords[0] - step * grad[0]/absV(grad), coords[1] - step * grad[1]/absV(grad)]
-            delta = meta.fn(newCoords[0], newCoords[1]) - meta.fn(coords[0], coords[1])
+            delta = Meta.fn(newCoords[0], newCoords[1]) - Meta.fn(coords[0], coords[1])
             k+=1
             if delta < 0 or delta < quality * absV(grad)**2:
                 break
@@ -53,8 +53,8 @@ coordsArr = gradientDescent(start, step, max_steps)
 # x and y axis
 
   
-X, Y = np.meshgrid(meta.x, meta.y)
-Z = meta.fn(X, Y)
+X, Y = np.meshgrid(Meta.x, Meta.y)
+Z = Meta.fn(X, Y)
  
 fig = plt.figure()
 ax = plt.axes(projection ='3d')
@@ -67,8 +67,10 @@ ax.plot_surface(X, Y, Z, rstride=1, cstride=1, facecolors=rgb,
 for i in range(len(coordsArr) - 1):
     [x, y] = coordsArr[i]
     [xN, yN] = coordsArr[i+1]
-    ax.plot3D([x, xN], [y, yN], [meta.fn(x, y), meta.fn(xN, yN)], 'red')
+    ax.plot3D([x, xN], [y, yN], [Meta.fn(x, y), Meta.fn(xN, yN)], 'red')
+print(coordsArr)
 plt.show()
+
 
 
 

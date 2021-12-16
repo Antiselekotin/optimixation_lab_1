@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.colors import LightSource
-import meta
+import meta.Meta as Meta
  
  
 
@@ -11,8 +11,8 @@ import meta
 # x and y axis
 
   
-X, Y = np.meshgrid(meta.x, meta.y)
-Z = meta.fn(X, Y)
+X, Y = np.meshgrid(Meta.x, Meta.y)
+Z = Meta.fn(X, Y)
  
 fig = plt.figure()
 ax = plt.axes(projection ='3d')
